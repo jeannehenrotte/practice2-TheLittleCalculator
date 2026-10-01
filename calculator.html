@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>The Little Calculator</title>
+        <link rel="stylesheet" href="calculator.css">
+    </head>
+    <body>
+        <div class="calculator">
+            <h1>My little calculator</h1>
+            <h2 class="big" id="info" title="Information about the number">Information about the number</h2>
+            <div class="input-row">
+                <div class="input">
+                    <input type="text" id="mainInput" placeholder="Enter a number or CSV list">
+                </div> 
+                <button id="clearfield" onclick="clearCalculator()">AC</button>
+            </div>
+            
+            <div class="grid-2">
+                <div class="power">
+                    <input type="text" id="powerInput" placeholder="Power">
+                </div>
+                <div class="removeInput">
+                    <input type="text" id="removeInput" placeholder="CSV value to remove">
+                </div>
+            </div>
+        
+            <div class="button">
+                <button onclick="appendInput('1')">1</button>
+                <button onclick="appendInput('2')">2</button>
+                <button onclick="appendInput('3')">3</button>
+                <button id="addition" onclick="setBinaryOperator('+')">+</button>
+                <button id="modulo" onclick="mod()">mod()</button>
+                <button id="sum" onclick="sumCSV()">sum()</button>
+                <button id="square" onclick="square()">x<sup>2</sup></button>
+                <button onclick="appendInput('4')">4</button>
+                <button onclick="appendInput('5')">5</button>
+                <button onclick="appendInput('6')">6</button>
+                <button id="substract" onclick="setBinaryOperator('-')">-</button>
+                <button id="factorial" onclick="fact()">fact()</button>
+                <button id="sort" onclick="sortCSV()">sort()</button>
+                <button id="exponention" onclick="powerOp()">x<sup>x</sup></button>
+                <button onclick="appendInput('7')">7</button>
+                <button onclick="appendInput('8')">8</button>
+                <button onclick="appendInput('9')">9</button>
+                <button id="multiply" onclick="setBinaryOperator('*')">x</button>
+                <button id="average" onclick="averageCSV()">Average</button>
+                <button id="reverse" onclick="reverseCSV()">reverse()</button>
+                <button id="squareroot" onclick="sqrtOp()">√</button>
+                <button id="coma" onclick="appendInput(',')">,</button>
+                <button onclick="appendInput('0')">0</button>
+                <button id="point" onclick="appendInput('.')">.</button>
+                <button id="divide" onclick="setBinaryOperator('/')">/</button>
+                <button id="remove" onclick="removeSpecificCSV()">remove</button>
+                <button id="removelast" onclick="removelastCSV()">removelast()</button>
+                <button id="equal" onclick="eq()">=</button>
+        
+            </div>
+            <div class="footer">
+                <button onclick="downloadErrorLog()">Download Error</button>
+                <div id="errorCounter">Error log: 0</div>
+            </div>
+        </div> 
+    
+        <script src="calculator.js"></script>
+    </body>
+</html>
