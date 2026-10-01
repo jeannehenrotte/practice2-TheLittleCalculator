@@ -1,6 +1,7 @@
 let pendingOperand = null;
 let pendingOperator = null;
 let errorLogs = [];
+let activeInputId = "mainInput";
 
 function validate(input, type = "single") {
     if (input === null || input === undefined || input.trim() === "") {
@@ -117,7 +118,7 @@ function sqrtOp() {
     fill_info(res, "Operation: Square Root (Positive Input)");
 }
 
-function powerOp() {
+function powerOp(){
     const baseInput = document.getElementById("mainInput").value;
     const expInput = document.getElementById("powerInput").value;
 
@@ -251,7 +252,7 @@ function removeSpecificCSV() {
 }
 
 function appendInput(char) {
-    document.getElementById("mainInput").value += char;
+    document.getElementById(activeInputId).value += char;
 }
 
 function clearCalculator() {
@@ -265,6 +266,12 @@ function clearCalculator() {
 
 function updateDisplay(val) {
     document.getElementById("mainInput").value = val;
+}
+
+for (const inputId of ["mainInput", "powerInput", "removeInput"]) {
+    document.getElementById(inputId).addEventListener("focus", function() {
+        activeInputId = inputId;
+    });
 }
 
 document.addEventListener("keydown", function(event) {
@@ -293,3 +300,4 @@ function downloadErrorLog() {
     a.click();
     URL.revokeObjectURL(url);
 }
+
