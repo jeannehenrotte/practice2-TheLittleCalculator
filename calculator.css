@@ -217,4 +217,24 @@ h1 {
         padding: 10px 5px !important;
         font-size: 14px !important; 
     }
+    
+    .input-container, .calculator-top-row { /* Mettez la classe ou le conteneur qui entoure votre input et AC */
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    }
+
+    input[type="text"], input[type="number"], .calculator input {
+        flex: 1;
+        width: auto !important;
+        pointer-events: auto !important; 
+        user-select: text;
+        -webkit-user-select: text;
+    }
+
+    button#ac, .btn-ac, button.ac {
+        flex: 0 0 auto !important;
+        width: 80px !important; 
+    }
 }
