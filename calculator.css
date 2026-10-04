@@ -189,10 +189,10 @@ h1 {
 
 @media screen and (max-width: 600px) {
     .calculator {
-        width: 95% !important;
-        max-width: 100% !important;
-        margin: 10px auto !important;
+        width: 100% !important;
+        max-width: 100vw !important;
         box-sizing: border-box !important;
+        overflow-x: hidden !important;
         padding: 10px !important;
     }
    
