@@ -10,5 +10,5 @@ Features
 
 
 website URL:
-littlecalculator-jeannehenrotte.netlify.app
+[littlecalculator-jeannehenrotte.netlify.app](https://littlecalculator-jeannehenrotte.netlify.app)
 
