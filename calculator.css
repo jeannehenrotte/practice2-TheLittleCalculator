@@ -191,8 +191,30 @@ h1 {
     .calculator {
         width: 100% !important;
         max-width: 100% !important;
-        margin: 0 !important;
+        margin: 0 auto !important;
         border-radius: 0; /* Optionnel : supprime les arrondis sur mobile pour coller aux bords */
         padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .calculator input, 
+    .calculator select, 
+    .calculator textarea,
+    .calculator .display {
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    .buttons, .button-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr) !important; /* Force un nombre de colonnes adapté sur mobile */
+        gap: 5px !important;
+        width: 100% !important;
+    }
+
+    .calculator button {
+        width: 100% !important;
+        padding: 10px 5px !important;
+        font-size: 14px !important; 
     }
 }
