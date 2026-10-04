@@ -65,32 +65,42 @@ function fill_info(val, contextMessage = "") {
 function square() {
     const input = document.getElementById("mainInput").value;
     const v = validate(input, "single");
-    if (!v.valid) return;
+    if (!v.valid) {
+        document.getElementById("info").innerText = v.message;
+        return;
+    }
 
     const res = v.value * v.value;
     updateDisplay(res);
     fill_info(res, "Square");
 }
 
-function mod() {
+const mod = () => {
     const input = document.getElementById("mainInput").value;
     const v = validate(input, "single");
-    if (!v.valid) return;
+    if (!v.valid) {
+        document.getElementById("info").innerText = v.message;
+        return;
+    }
 
     const x = v.value;
     const res = x < 0 ? -x : x;
     updateDisplay(res);
     fill_info(res, "Operation: Modulo");
-}
+}; 
 
-function fact() {
+const fact = () => {
     const input = document.getElementById("mainInput").value;
     const v = validate(input, "single");
-    if (!v.valid) return;
+    if (!v.valid) {
+        document.getElementById("info").innerText = v.message;
+        return;
+    }
 
     const x = v.value;
     if (x < 0 || !Number.isInteger(x)) {
         logError(`Factorial Error: Input '${x}' is invalid.`);
+        document.getElementById("info").innerText = `Error: Input '${x}' is invalid for factorial`;
         return;
     }
 
@@ -99,12 +109,15 @@ function fact() {
 
     updateDisplay(res);
     fill_info(res, "Operation: Factorial");
-}  
+};
 
 function sqrtOp() {
     const input = document.getElementById("mainInput").value;
     const v = validate(input, "single");
-    if (!v.valid) return;
+    if (!v.valid) {
+        document.getElementById("info").innerText = v.message;
+        return;
+    }
 
     const x = v.value;
     if (x < 0) {
@@ -123,7 +136,10 @@ function powerOp(){
     const expInput = document.getElementById("powerInput").value;
 
     const vBase = validate(baseInput, "single");
-    if (!vBase.valid) return;
+    if (!vBase.valid) {
+        document.getElementById("info").innerText = vBase.message;
+        return;
+    }
 
     const vExp = validate(expInput, "single");
     if (!vExp.valid) return;
@@ -136,7 +152,10 @@ function powerOp(){
 function setBinaryOperator(op) {
     const input = document.getElementById("mainInput").value;
     const v = validate(input, "single");
-    if (!v.valid) return;
+    if (!v.valid) {
+        document.getElementById("info").innerText = v.message;
+        return;
+    }
 
     pendingOperand = v.value;
     pendingOperator = op;
@@ -150,7 +169,10 @@ function eq() {
 
     const input = document.getElementById("mainInput").value;
     const v = validate(input, "single");
-    if (!v.valid) return;
+    if (!v.valid) {
+        document.getElementById("info").innerText = v.message;
+        return;
+    }
 
     const secondOperand = v.value;
     let res = 0;
@@ -164,6 +186,7 @@ function eq() {
     } else if (pendingOperator === "/") {
         if (secondOperand === 0) {
             logError("Division Error: Cannot divide by zero.");
+            document.getElementById("info").innerText = "Error: Division by zero is not allowed.";
             return;
         }
         res = pendingOperand / secondOperand;
@@ -185,7 +208,10 @@ function eq() {
 function sumCSV() {
     const input = document.getElementById("mainInput").value;
     const v = validate(input, "CSV");
-    if (!v.valid) return;
+    if (!v.valid) {
+        document.getElementById("info").innerText = v.message;
+        return;
+    }
 
     const res = v.value.reduce((acc, curr) => acc + curr, 0);
     updateDisplay(res);
@@ -195,7 +221,10 @@ function sumCSV() {
 function sortCSV() {
     const input = document.getElementById("mainInput").value;
     const v = validate(input, "CSV");
-    if (!v.valid) return;
+    if (!v.valid) {
+        document.getElementById("info").innerText = v.message;
+        return;
+    }
 
     const sorted = [...v.value].sort((a, b) => a - b);
     updateDisplay(sorted.join(", "));
@@ -205,7 +234,10 @@ function sortCSV() {
 function reverseCSV() {
     const input = document.getElementById("mainInput").value;
     const v = validate(input, "CSV");
-    if (!v.valid) return;
+    if (!v.valid) {
+        document.getElementById("info").innerText = v.message;
+        return;
+    }
 
     const reversed = [...v.value].reverse();
     updateDisplay(reversed.join(", "));
@@ -215,7 +247,10 @@ function reverseCSV() {
 function removelastCSV() {
     const input = document.getElementById("mainInput").value;
     const v = validate(input, "CSV");
-    if (!v.valid) return;
+    if (!v.valid) {
+        document.getElementById("info").innerText = v.message;
+        return;
+    }
 
     const arr = [...v.value];
     arr.pop();
@@ -226,8 +261,11 @@ function removelastCSV() {
 function averageCSV() {
     const input = document.getElementById("mainInput").value;
     const v = validate(input, "CSV");
-    if (!v.valid) return;
-    
+    if (!v.valid) {
+        document.getElementById("info").innerText = v.message;
+        return;
+    }
+
     const total = v.value.reduce((acc, curr) => acc + curr, 0);
     const avg = total / v.value.length;
     updateDisplay(avg);
@@ -239,10 +277,16 @@ function removeSpecificCSV() {
     const toRemoveInput = document.getElementById("removeInput").value;
 
     const v = validate(input, "csv");
-    if (!v.valid) return;
+    if (!v.valid) {
+        document.getElementById("info").innerText = v.message;
+        return;
+    }
 
     const vRem = validate(toRemoveInput, "single");
-    if (!vRem.valid) return;
+    if (!vRem.valid) {
+        document.getElementById("info").innerText = vRem.message;
+        return;
+    }
 
     const valToRemove = vRem.value;
     const filtered = v.value.filter(item => item !== valToRemove);
