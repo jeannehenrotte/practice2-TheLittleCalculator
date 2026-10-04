@@ -20,6 +20,7 @@ body {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 850px;
+    margin: 20px auto;
 }
 
 
@@ -184,4 +185,14 @@ h1 {
     font-size: 0.95rem;
     color: #6b7280;
     font-weight: 500;
+}
+
+@media screen and (max-width: 600px) {
+    .calculator {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        border-radius: 0; /* Optionnel : supprime les arrondis sur mobile pour coller aux bords */
+        padding: 10px;
+    }
 }
